@@ -105,19 +105,3 @@ namespace acl
 #else
 #define IF_ACL_BIND_POSE(...)
 #endif
-
-//////////////////////////////////////////////////////////////////////////
-//
-// Integers between 0 and 2^24 are 100% accurate as floats. Leverage this with a maximum quantization of 24 bits.
-//
-// Floating point */ with 2^x is precision-friendly.  It shifts the exponent without touching the mantissa.  This drives
-// our quantization.
-//
-// Normalizing to 0.0f..1.0F is less accurate than normalizing to -0.5F..0.5F.  The latter range can handle 
-// 1/(2^25), which is the error term of 24 bit quantization.
-//
-// Always floor after scaling, and before shifting from -halfQ..halfQ to 0..fullQ.  Otherwise, IEEE float addition will
-// round the result before you get a chance to floor it.
-//
-//////////////////////////////////////////////////////////////////////////
-#define ACL_PRECISION_BOOST

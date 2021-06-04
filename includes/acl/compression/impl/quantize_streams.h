@@ -362,17 +362,7 @@ namespace acl
 #endif
 
 				uint8_t* quantized_ptr = quantized_stream.get_raw_sample_ptr(0);
-
-#ifdef ACL_PRECISION_BOOST
-
-				pack_vector3_sn48_unsafe_precise_endpoints(normalized_rotation, quantized_ptr);
-
-#else
-
 				pack_vector3_u48_unsafe(normalized_rotation, quantized_ptr);
-
-#endif
-
 			}
 			else
 			{
@@ -391,17 +381,7 @@ namespace acl
 					else
 					{
 						const rtm::quatf rotation = raw_segment_stream.get_raw_sample<rtm::quatf>(sample_index);
-
-#ifdef ACL_PRECISION_BOOST
-
-						pack_vector3_snXX_unsafe(rtm::quat_to_vector(rotation), num_bits_at_bit_rate, quantized_ptr);
-
-#else
-
 						pack_vector3_uXX_unsafe(rtm::quat_to_vector(rotation), num_bits_at_bit_rate, quantized_ptr);
-
-#endif
-
 					}
 				}
 			}
@@ -511,17 +491,7 @@ namespace acl
 #endif
 
 				uint8_t* quantized_ptr = quantized_stream.get_raw_sample_ptr(0);
-
-#ifdef ACL_PRECISION_BOOST
-
-				pack_vector3_sn48_unsafe_precise_endpoints(normalized_translation, quantized_ptr);
-
-#else
-
 				pack_vector3_u48_unsafe(normalized_translation, quantized_ptr);
-
-#endif
-
 			}
 			else
 			{
@@ -539,17 +509,7 @@ namespace acl
 					else
 					{
 						const rtm::vector4f translation = raw_segment_stream.get_raw_sample<rtm::vector4f>(sample_index);
-
-#ifdef ACL_PRECISION_BOOST
-
-						pack_vector3_snXX_unsafe(translation, num_bits_at_bit_rate, quantized_ptr);
-
-#else
-
 						pack_vector3_uXX_unsafe(translation, num_bits_at_bit_rate, quantized_ptr);
-
-#endif
-
 					}
 				}
 			}
@@ -659,17 +619,7 @@ namespace acl
 #endif
 
 				uint8_t* quantized_ptr = quantized_stream.get_raw_sample_ptr(0);
-
-#ifdef ACL_PRECISION_BOOST
-
-				pack_vector3_sn48_unsafe_precise_endpoints(normalized_scale, quantized_ptr);
-
-#else
-
 				pack_vector3_u48_unsafe(normalized_scale, quantized_ptr);
-
-#endif
-
 			}
 			else
 			{
@@ -687,17 +637,7 @@ namespace acl
 					else
 					{
 						const rtm::vector4f scale = raw_segment_stream.get_raw_sample<rtm::vector4f>(sample_index);
-
-#ifdef ACL_PRECISION_BOOST
-
-						pack_vector3_snXX_unsafe(scale, num_bits_at_bit_rate, quantized_ptr);
-
-#else
-
 						pack_vector3_uXX_unsafe(scale, num_bits_at_bit_rate, quantized_ptr);
-
-#endif
-
 					}
 				}
 			}
